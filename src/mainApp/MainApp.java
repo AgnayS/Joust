@@ -11,7 +11,7 @@ public class MainApp {
 	
 	
 	private void runApp() {
-		System.out.println("Agnay Srivastava");		
+		System.out.println("Your name");		
 	} // runApp
 
 	/**
