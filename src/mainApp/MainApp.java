@@ -9,15 +9,9 @@ package mainApp;
  */
 public class MainApp {
 	
-	
 	private void runApp() {
-		System.out.println("Your name");		
-	} // runApp
-
-	/**
-	 * ensures: runs the application
-	 * @param args unused
-	 */
+	}
+	
 	public static void main(String[] args) {
 		MainApp mainApp = new MainApp();
 		mainApp.runApp();		
