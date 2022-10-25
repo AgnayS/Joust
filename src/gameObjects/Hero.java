@@ -6,8 +6,13 @@ public class Hero extends GameObject {
 	private final static int HERO_WIDTH = 1;
 	private final static int HERO_HEIGHT = 1;
 	private final static Image HERO_SPRITE = null;
+	
+	private int lives;
+	private int score;
 
 	public Hero(int xPos, int yPos) {
 		super(HERO_WIDTH, HERO_HEIGHT, HERO_SPRITE, xPos, yPos);
+		this.lives = 3;
+		
 	}
 }
