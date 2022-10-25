@@ -1,5 +1,8 @@
 package mainApp;
 
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
 
 /**
  * Class: MainApp
@@ -9,7 +12,10 @@ package mainApp;
  */
 public class MainApp {
 	
-	private void runApp() {
+	private void runApp() 
+	{
+		Level obj = new Level("level1.txt");
+		obj.displayLevel();
 	}
 	
 	public static void main(String[] args) {
@@ -18,3 +24,7 @@ public class MainApp {
 	} // main
 
 }
+
+
+
+
