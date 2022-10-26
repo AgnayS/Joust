@@ -1,5 +1,6 @@
 package gameObjects;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 public abstract class GameObject {
@@ -7,7 +8,7 @@ public abstract class GameObject {
 	protected final int width, height;
 	protected final Image sprite;
 
-	protected double xPos, yPos, xVel, yVel;
+	protected double xPos, yPos;
 
 	public GameObject(int width, int height, Image sprite, double xPos, double yPos) {
 		this.width = width;
@@ -17,9 +18,8 @@ public abstract class GameObject {
 		this.sprite = sprite;
 	}
 
-	public boolean collision(GameObject other) {
-		return (this.xPos + this.width >= other.getxPos() || other.getxPos() + other.getWidth() >= this.xPos)
-				&& (this.yPos + this.height >= other.getyPos() || other.getyPos() + other.getHeight() >= this.yPos);
+	public void drawOn(Graphics2D g2) {
+		g2.drawImage(sprite, (int) xPos, (int) yPos, width, height, 0, 0, sprite.getWidth(null), sprite.getHeight(null), null);
 	}
 
 	public int getWidth() {
@@ -36,14 +36,6 @@ public abstract class GameObject {
 
 	public double getyPos() {
 		return yPos;
-	}
-
-	public double getxVel() {
-		return xVel;
-	}
-
-	public double getyVel() {
-		return yVel;
 	}
 
 	public Image getSprite() {
