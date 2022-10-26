@@ -14,7 +14,7 @@ public class MainApp {
 	
 	private void runApp() 
 	{
-		Level obj = new Level("level1.txt");
+		Level obj = new Level("level2.txt");
 		obj.displayLevel();
 	}
 	
