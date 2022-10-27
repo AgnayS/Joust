@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.Buffer;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -19,9 +20,12 @@ import javax.swing.JFrame;
 
 import org.w3c.dom.ls.LSException;
 
+import gameObjects.PlatformPiece;
+
 public class Level extends JComponent {
 
 	String pathToFile;
+	ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
 
 	public Level(String path) {
 		pathToFile = path;
@@ -51,34 +55,31 @@ public class Level extends JComponent {
 		}
 
 		String currentLine;
+		int j = 0;
 		try {
 			while ((currentLine = br.readLine()) != null) {
-				if (currentLine.charAt(currentLine.length() - 1) == '|' && currentLine.charAt(0) == '|') {
-					height++;
-					width = 0;
-
-					for (int i = 1; i < currentLine.length() - 1; i++) {
-						if (currentLine.charAt(i) == '.') {
-							width++;
-						} else if (currentLine.charAt(i) == 'L') {
-							coordinates.put(width, height);
-							width++;
-						} else
-							System.out.println(new InvalidLevelFormatException(currentLine));
-						// TODO handle correct character but asymmetric matrix
-						// TODO crash program if wrong text file is loaded, or if asking user for input,
-						// put inside a while loop and ask for path again
-					}
-				} else {
-					System.out.println(new InvalidLevelFormatException(currentLine));
+				if(height == 0) {
+					height = currentLine.length();
+				} else if (currentLine.length() != height){
+					throw new InvalidLevelFormatException(pathToFile);
 				}
-
+				for(int i = 0; i < currentLine.length(); i++) {
+					if(currentLine.charAt(i) == 'L') {
+						platformPieces.add(new PlatformPiece(5,i,j));
+					} else if (currentLine.charAt(i) != '.') {
+						throw new InvalidLevelFormatException(currentLine);
+					}
+				}
 			}
 
 		} catch (IOException e) {
 			System.out.println("Io Exception occured, check again");
+		} catch (InvalidLevelFormatException e) {
+			
 		}
 
+		
+		
 		frame.add(new Platform(coordinates));
 
 	}
@@ -86,4 +87,15 @@ public class Level extends JComponent {
 	public void frameFromFile(String pathToFile) {
 
 	}
+
+	protected void paintComponent(Graphics graphics) {
+		super.paintComponent(graphics);
+	
+		Graphics2D graphics2 = (Graphics2D) graphics;
+		for(PlatformPiece pp : platformPieces) {
+			pp.drawOn(graphics2);
+		}
+	}
+	
+	
 }

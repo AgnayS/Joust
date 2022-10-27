@@ -9,6 +9,7 @@ public abstract class GameObject {
 	protected final Image sprite;
 
 	protected double xPos, yPos;
+	protected boolean markedForRemoval;
 
 	public GameObject(int width, int height, Image sprite, double xPos, double yPos) {
 		this.width = width;
@@ -20,6 +21,14 @@ public abstract class GameObject {
 
 	public void drawOn(Graphics2D g2) {
 		g2.drawImage(sprite, (int) xPos, (int) yPos, width, height, 0, 0, sprite.getWidth(null), sprite.getHeight(null), null);
+	}
+	
+	public void markToRemove() {
+		markedForRemoval = true;
+	}
+	
+	public boolean shouldBeRemoved() {
+		return markedForRemoval;
 	}
 
 	public int getWidth() {

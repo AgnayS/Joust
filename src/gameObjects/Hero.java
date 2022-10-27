@@ -11,6 +11,8 @@ public class Hero extends DynamicGameObject {
 	private int lives;
 	private int score;
 	private int damageCooldown;
+	
+	
 
 	public Hero(int xPos, int yPos) {
 		super(HERO_WIDTH, HERO_HEIGHT, MOVING_RIGHT_HERO_SPRITE, xPos, yPos);
