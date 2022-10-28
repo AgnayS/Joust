@@ -3,29 +3,32 @@ package mainApp;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 import gameObjects.*;
 
 public class GameComponent extends JComponent {
-	private final static int FRAME_WIDTH = 2500, FRAME_HEIGHT = 1500;
 	private final static double TICK_LENGTH = 0.05;
 	
-	private ArrayList<Hero> heroes;
-	private ArrayList<PlatformPiece> platformPieces;
-	private ArrayList<DynamicGameObject> dynamicGameObjects;
-	private ArrayList<GameObject> gameObjects;
+	private ArrayList<Hero> heroes = new ArrayList<>();
+	private ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
+	private ArrayList<DynamicGameObject> dynamicGameObjects = new ArrayList<>();
+	private ArrayList<GameObject> gameObjects = new ArrayList<>();
+	public JTextField jtf;
 	
-	public GameComponent() {
-		JFrame frame = new JFrame();
-		Dimension frameSize = new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
-		frame.setSize(frameSize);
-		frame.setTitle("JOUST!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+	public GameComponent(ArrayList<PlatformPiece> platformPieces, Hero hero) {
+
+		this.heroes.add(hero);
+		this.platformPieces = platformPieces;
+		gameObjects.addAll(platformPieces);
+		gameObjects.add(hero);
+		dynamicGameObjects.add(hero);
 	}
 	
 	@Override
@@ -35,7 +38,7 @@ public class GameComponent extends JComponent {
 
 		for (GameObject gameObject: gameObjects) {
 			gameObject.drawOn(g2d);
-		} // end for
+		}
 	}
 	
 	public void updateGame() {
@@ -49,10 +52,8 @@ public class GameComponent extends JComponent {
 			}
 		}
 	}
-	
-	private void displayGame() {
-		for(GameObject gameObject : gameObjects) {
-			gameObject.drawOn(null);
-		}
+
+	public void drawScreen() {
+		this.repaint();
 	}
 }

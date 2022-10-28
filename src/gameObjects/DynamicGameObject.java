@@ -35,19 +35,19 @@ public abstract class DynamicGameObject extends GameObject {
 	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces) {
 		xPos += xVel;
 		yPos += yVel;
-		yVel += GRAVITATIONAL_ACCELERATION;
-		for (Hero hero : heroes) {
-			int[] collisionDirection = this.getCollisionDirection(hero);
-			if (!(collisionDirection[0] == 0 && collisionDirection[1] == 0)) {
-				this.handleHeroInteraction(hero);
-			}
-		}
-		for (PlatformPiece platformPiece : platformPieces) {
-			int[] collisionDirection = this.getCollisionDirection(platformPiece);
-			if (!(collisionDirection[0] == 0 && collisionDirection[1] == 0)) {
-				platformPiece.handleCollision(this, collisionDirection);
-			}
-		}
+		//heroes += GRAVITATIONAL_ACCELERATION;
+//		for (Hero hero : heroes) {
+//			int[] collisionDirection = this.getCollisionDirection(hero);
+//			if (!(collisionDirection[0] == 0 && collisionDirection[1] == 0)) {
+//				this.handleHeroInteraction(hero);
+//			}
+//		}
+//		for (PlatformPiece platformPiece : platformPieces) {
+//			int[] collisionDirection = this.getCollisionDirection(platformPiece);
+//			if (!(collisionDirection[0] == 0 && collisionDirection[1] == 0)) {
+//				platformPiece.handleCollision(this, collisionDirection);
+//			}
+//		}
 	}
 
 	public void handleHeroInteraction(Hero hero) {
