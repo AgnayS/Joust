@@ -1,3 +1,4 @@
+
 package mainApp;
 
 import java.awt.Dimension;
@@ -55,7 +56,6 @@ public class MainApp {
 		frame.setVisible(true);
 
 		frame.setFocusable(true);
-		Hero hero = new Hero(20,150);
 		try {
 			while ((currentLine = br.readLine()) != null) {
 				if (width == 0) {
@@ -74,7 +74,7 @@ public class MainApp {
 				
 			}
 
-			GameComponent gameComponent = new GameComponent(platformPieces, hero);
+			GameComponent gameComponent = new GameComponent(platformPieces);
 
 			GameListener gameListener = new GameListener(gameComponent);
 			Timer timer = new Timer(DELAY, gameListener);
@@ -84,6 +84,7 @@ public class MainApp {
 			frame.getContentPane().setPreferredSize(frameSize);
 		    frame.pack();
 		    frame.add(gameComponent);
+		    gameComponent.addHeroListener(frame);
 			
 		} catch (IOException e) {
 			System.err.println("I/O Exception occured, check again");
@@ -93,27 +94,12 @@ public class MainApp {
 		KeyAdapter keyAdapter = new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-					hero.moveLeft();
-				} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					hero.moveRight();
-				} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-					hero.moveUp();
-				} else if (e.getKeyCode() == KeyEvent.VK_U) {
+				if (e.getKeyCode() == KeyEvent.VK_U) {
 					frame.dispose();
 					runApp((levelIndex + 1) % LEVEL_PATHS.length);
 				} else if (e.getKeyCode() == KeyEvent.VK_D) {
 					frame.dispose();
 					runApp((levelIndex - 1) % LEVEL_PATHS.length);
-				}
-				
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					hero.stopLeftRight();
-				} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-					hero.stopUpDown();
 				}
 			}
 		};

@@ -22,13 +22,20 @@ public class GameComponent extends JComponent {
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
 	public JTextField jtf;
 	
-	public GameComponent(ArrayList<PlatformPiece> platformPieces, Hero hero) {
+	public GameComponent(ArrayList<PlatformPiece> platformPieces) {
 
-		this.heroes.add(hero);
+		this.heroes.add(new Hero(20,150,KeyEvent.VK_UP,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT));
+		this.heroes.add(new Hero(20,20,KeyEvent.VK_S,KeyEvent.VK_Z,KeyEvent.VK_C));
 		this.platformPieces = platformPieces;
 		gameObjects.addAll(platformPieces);
-		gameObjects.add(hero);
-		dynamicGameObjects.add(hero);
+		gameObjects.addAll(heroes);
+		dynamicGameObjects.addAll(heroes);
+	}
+	
+	public void addHeroListener(JFrame frame) {
+		for(Hero hero : heroes) {
+			hero.addKeyAdapter(frame);
+		}
 	}
 	
 	@Override
