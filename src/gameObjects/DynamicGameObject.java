@@ -7,7 +7,7 @@ public abstract class DynamicGameObject extends GameObject {
 
 	private final static double GRAVITATIONAL_ACCELERATION = 1;
 	private final static double TERMINAL_VELOCITY = 40;
-	private final static int MAX_X = 960;
+	private final static int MAX_X = 960-48;
 	
 	protected double xVel, yVel;
 
@@ -41,11 +41,11 @@ public abstract class DynamicGameObject extends GameObject {
 	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces) {
 //		xPos = ((xPos+this.width) % (MAX_X)) - this.width;
 //		System.out.println(xPos);
-		if(xPos > MAX_X+this.width) {
-			xPos = -this.width;
+		if(xPos > MAX_X+this.width*2) {
+			xPos = -this.width*.9;
 		}
-		if(xPos < -this.width) {
-			xPos = MAX_X+this.width;
+		if(xPos < -this.width*.9) {
+			xPos = MAX_X+this.width*2;
 		}
 		xPos += xVel;
 		yPos += yVel;
