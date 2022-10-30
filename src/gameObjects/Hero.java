@@ -69,4 +69,13 @@ public class Hero extends DynamicGameObject {
 	public void moveUp() {
 		yVel = -HERO_SPEED;
 	}
+	//M3 addition, if hero has more than 1 life then he respawns, else is game over
+//	public void die() {
+//		if(this.lives != 0) {
+//			this.lives --;
+//			
+//		} else {
+//			
+//		}
+//	}
 }
