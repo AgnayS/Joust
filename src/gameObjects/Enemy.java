@@ -4,8 +4,8 @@ import java.awt.Image;
 
 public class Enemy extends DynamicGameObject {
 	private final static int DEFAULT_POINT_VALUE = 10;
-	private final static int ENEMY_WIDTH = 1;
-	private final static int ENEMY_HEIGHT = 1;
+	private final static int ENEMY_WIDTH = 20;
+	private final static int ENEMY_HEIGHT = 20;
 	private final static Image MOVING_LEFT_ENEMY_SPRITE = null, MOVING_RIGHT_ENEMY_SPRITE = null, JUMPING_LEFT_ENEMY_SPRITE = null, JUMPING_RIGHT_ENEMY_SPRITE = null, FALLING_LEFT_ENEMY_SPRITE = null, FALLING_RIGHT_ENEMY_SPRITE = null;
 
 	private int pointValue;
