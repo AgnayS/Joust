@@ -104,6 +104,7 @@ public class MainApp {
 			}
 		};
 		frame.addKeyListener(keyAdapter);
+		frame.validate();
 	}
 }
 
