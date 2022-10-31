@@ -20,16 +20,23 @@ public class GameComponent extends JComponent {
 	private ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
 	private ArrayList<DynamicGameObject> dynamicGameObjects = new ArrayList<>();
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
-	public JTextField jtf;
 	
 	public GameComponent(ArrayList<PlatformPiece> platformPieces) {
 
 		this.heroes.add(new Hero(20,150,KeyEvent.VK_UP,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT));
 		this.heroes.add(new Hero(20,20,KeyEvent.VK_S,KeyEvent.VK_Z,KeyEvent.VK_C));
 		this.platformPieces = platformPieces;
-		gameObjects.addAll(platformPieces);
-		gameObjects.addAll(heroes);
+
 		dynamicGameObjects.addAll(heroes);
+		Grunt g = new Grunt(100,100);
+		dynamicGameObjects.add(g);
+		g.moveRight();
+		Hopper h = new Hopper(200,100);
+		dynamicGameObjects.add(h);
+		h.moveUp();
+		h.moveRight();
+		gameObjects.addAll(platformPieces);
+		gameObjects.addAll(dynamicGameObjects);
 	}
 	
 	public void addHeroListener(JFrame frame) {
@@ -53,6 +60,7 @@ public class GameComponent extends JComponent {
 			dynamicGameObject.update(heroes, platformPieces);
 			if(dynamicGameObject.shouldBeRemoved()) {
 				dynamicGameObjects.remove(dynamicGameObject);
+				gameObjects.remove(dynamicGameObject);
 				if(heroes.remove(dynamicGameObject)){
 					//TODO: what happens when a player dies?
 				}

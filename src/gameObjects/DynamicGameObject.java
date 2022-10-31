@@ -65,8 +65,7 @@ public abstract class DynamicGameObject extends GameObject {
 		}
 	}
 
-	public void handleHeroInteraction(Hero hero) {
-	}
+	public void handleHeroInteraction(Hero hero){}
 
 	public double getxVel() {
 		return xVel;
