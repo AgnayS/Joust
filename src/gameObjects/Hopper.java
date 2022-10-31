@@ -3,7 +3,7 @@ package gameObjects;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
+//initial creation of Hopper as a subclass of enemy
 public class Hopper extends Enemy{
 
 	private final static int DEFAULT_POINT_VALUE = 10;

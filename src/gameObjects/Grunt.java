@@ -3,7 +3,7 @@ package gameObjects;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Color;
-
+//initial implementation of Grunt as a subclass of enemy
 public class Grunt extends Enemy{
 	private final static int DEFAULT_POINT_VALUE = 10;
 	private final static Image MOVING_LEFT_ENEMY_SPRITE = null, MOVING_RIGHT_ENEMY_SPRITE = null, JUMPING_LEFT_ENEMY_SPRITE = null, JUMPING_RIGHT_ENEMY_SPRITE = null, FALLING_LEFT_ENEMY_SPRITE = null, FALLING_RIGHT_ENEMY_SPRITE = null;

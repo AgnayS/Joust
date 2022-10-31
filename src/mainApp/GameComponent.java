@@ -30,11 +30,13 @@ public class GameComponent extends JComponent {
 		dynamicGameObjects.addAll(heroes);
 		Grunt g = new Grunt(100,100);
 		dynamicGameObjects.add(g);
+		//testing adding enemies to frame
 		g.moveRight();
 		Hopper h = new Hopper(200,100);
 		dynamicGameObjects.add(h);
 		h.moveUp();
 		h.moveRight();
+		//end testing adding enemies to frame
 		gameObjects.addAll(platformPieces);
 		gameObjects.addAll(dynamicGameObjects);
 	}

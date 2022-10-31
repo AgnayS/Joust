@@ -1,7 +1,7 @@
 package gameObjects;
 
 import java.awt.Image;
-
+//creation of Enemy as an abstract class
 public abstract class Enemy extends DynamicGameObject {
 	private final static int ENEMY_WIDTH = 20;
 	private final static int ENEMY_HEIGHT = 20;
