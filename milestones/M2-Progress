@@ -1,7 +1,10 @@
 Record your M2 progress (Date, Who, What has been done):
 
 
-1)
-2)
-3)
+1) Fixed stage change issue, can successfully iterate through levels
+2) Implemented collision logic for all game objects (no logic for hero interactions yet)
+3) Converted enemy to an abstract, all future enemy types will be a subclass of enemy
+4) Created Hopper and Grunt our first two enemies on screen and gave them initial movement testing code
+5) Falling implemented for DynamicGameObjects (characters in game that move)
+
 ...
