@@ -24,22 +24,23 @@ public class Grunt extends Enemy{
 		g2.setColor(Color.BLACK);
 	}
 	
-	public void moveRight() {
-		xVel = GRUNT_SPEED;
-	}
-	
-	public void moveLeft() {
-		xVel = -GRUNT_SPEED;
+//	public void moveRight() {
+//		xVel = GRUNT_SPEED;
+//	}
+//	
+//	public void moveLeft() {
+//		xVel = -GRUNT_SPEED;
+//	}
+	public void track(Hero hero) {
+		if(hero.getxPos() > this.getxPos()) {
+			this.setxVel(GRUNT_SPEED);
+		} else if(hero.getxPos() < this.getxPos()){
+			this.setxVel(-GRUNT_SPEED);
+		}
 	}
 	
 	public void moveUp() {
 		yVel = GRUNT_DEFAULT_VERT_SPEED;
 	}
 
-	@Override
-	public void handleHeroInteraction(Hero hero) {
-		if(hero.getyPos() > this.getyPos()){
-			this.markToRemove();
-		}		
-	}
 }

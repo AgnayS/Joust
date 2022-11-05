@@ -13,12 +13,9 @@ public class GameListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		advanceOneTick();
-	}
-
-	public void advanceOneTick() {
 		this.gameComponent.updateGame();
 		this.gameComponent.drawScreen();
 	}
+
 }
 

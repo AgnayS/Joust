@@ -24,14 +24,15 @@ public class GameComponent extends JComponent {
 	public GameComponent(ArrayList<PlatformPiece> platformPieces) {
 
 		this.heroes.add(new Hero(20,150,KeyEvent.VK_UP,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT));
-		this.heroes.add(new Hero(20,20,KeyEvent.VK_S,KeyEvent.VK_Z,KeyEvent.VK_C));
+		//temporarily removing 2nd hero to test enemy interactions for one hero
+		//this.heroes.add(new Hero(20,20,KeyEvent.VK_S,KeyEvent.VK_Z,KeyEvent.VK_C));
 		this.platformPieces = platformPieces;
 
 		dynamicGameObjects.addAll(heroes);
 		Grunt g = new Grunt(100,100);
 		dynamicGameObjects.add(g);
 		//testing adding enemies to frame
-		g.moveRight();
+		g.track(heroes.get(0));
 		Hopper h = new Hopper(200,100);
 		dynamicGameObjects.add(h);
 		h.moveUp();
@@ -58,16 +59,31 @@ public class GameComponent extends JComponent {
 	}
 	
 	public void updateGame() {
+		ArrayList<DynamicGameObject> keepList = new ArrayList<>();
+		ArrayList<Hero> heroKeepList = new ArrayList<>();
+		ArrayList<Egg> eggList = new ArrayList<>();
 		for(DynamicGameObject dynamicGameObject : dynamicGameObjects) {
 			dynamicGameObject.update(heroes, platformPieces);
-			if(dynamicGameObject.shouldBeRemoved()) {
-				dynamicGameObjects.remove(dynamicGameObject);
-				gameObjects.remove(dynamicGameObject);
-				if(heroes.remove(dynamicGameObject)){
-					//TODO: what happens when a player dies?
-				}
+			if(!dynamicGameObject.shouldBeRemoved()) {
+				keepList.add(dynamicGameObject);
+			} else {
+				eggList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos(), 250));
 			}
 		}
+		for(Hero hero : heroes) {
+			hero.update(heroes, platformPieces);
+			if(!hero.shouldBeRemoved()) {
+				heroKeepList.add(hero);
+			}
+		}
+		dynamicGameObjects = keepList; //updates list of dynamic game objects to keep in the game
+		heroes = heroKeepList; //keeps heroes in the game
+		gameObjects = new ArrayList<GameObject>(); //refreshes all objects in the game
+		gameObjects.addAll(dynamicGameObjects); //re adds all non-removed objects
+		gameObjects.addAll(eggList);
+		gameObjects.addAll(platformPieces); //re adds all platforms
+		gameObjects.addAll(heroes); //re adds non-removed heroes
+
 	}
 
 	public void drawScreen() {

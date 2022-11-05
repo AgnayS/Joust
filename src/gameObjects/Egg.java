@@ -11,14 +11,14 @@ public class Egg extends DynamicGameObject {
 	private int pointValue;
 	private int ticksUntilHatch;
 
-	public Egg(int xPos, int yPos, int pointValue) {
+	public Egg(double xPos, double yPos, int pointValue) {
 		super(EGG_WIDTH, EGG_HEIGHT, DEFAULT_EGG_SPRITE, xPos, yPos);
+		System.out.println("No Egg?");
 		this.pointValue = pointValue;
 		this.ticksUntilHatch = TICKS_TO_HATCH;
 	}
+
 	
-	@Override
-	public void handleHeroInteraction(Hero hero) {
-		
-	}
+	
+	
 }

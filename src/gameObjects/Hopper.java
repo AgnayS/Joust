@@ -35,11 +35,6 @@ public class Hopper extends Enemy{
 	public void moveUp() {
 		yVel = GRUNT_DEFAULT_VERT_SPEED;
 	}
-	@Override
-	public void handleHeroInteraction(Hero hero) {
-		if(hero.getyPos() > this.getyPos()){
-			this.markToRemove();
-		}		
-	}
+
 	
 }

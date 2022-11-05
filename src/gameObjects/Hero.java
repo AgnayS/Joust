@@ -16,8 +16,9 @@ public class Hero extends DynamicGameObject {
 	
 	private final int leftKey, rightKey, upKey;
 	private int lives;
-	private int score;
+	public int score;
 	private int damageCooldown;
+	private long previousDeathTime;
 	
 	
 
@@ -69,13 +70,25 @@ public class Hero extends DynamicGameObject {
 	public void moveUp() {
 		yVel = -HERO_SPEED;
 	}
+	public void updateScore(int score) {
+		this.score += score;
+	}
 	//M3 addition, if hero has more than 1 life then he respawns, else is game over
-//	public void die() {
-//		if(this.lives != 0) {
-//			this.lives --;
-//			
-//		} else {
-//			
-//		}
-//	}
+	public void die(long timeOfDeath) {
+		if(this.lives == 3) {
+			this.lives --;
+			this.previousDeathTime = timeOfDeath;
+		}
+		if((timeOfDeath - this.previousDeathTime) / 1000 > 3) {
+			this.lives --;
+			this.previousDeathTime = timeOfDeath;
+			if(this.lives < 0) {
+					this.markToRemove();
+			}
+			
+		}
+	}
+	public int getLives() {
+		return this.lives;
+	}
 }
