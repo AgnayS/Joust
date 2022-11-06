@@ -92,4 +92,8 @@ public abstract class DynamicGameObject extends GameObject {
 		yPos += positionIncrement[1];
 	}
 
+	public void track(Hero hero) {
+		
+	}
+
 }
