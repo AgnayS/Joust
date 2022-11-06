@@ -24,5 +24,14 @@ public class Hopper extends Enemy{
 		g2.setColor(Color.BLACK);
 	}
 	
-	
+	public void track(Hero hero) {
+		if(hero.getxPos() > this.getxPos()) {
+			this.setxVel(HOPPER_SPEED);
+		} else if(hero.getxPos() < this.getxPos()){
+			this.setxVel(HOPPER_SPEED);
+		}
+		if(hero.getyPos() < this.getyPos()) {
+			this.setyVel(-this.yVel);
+		}
+	}	
 }

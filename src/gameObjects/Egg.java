@@ -3,9 +3,10 @@ package gameObjects;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.ArrayList;
 
 public class Egg extends DynamicGameObject {
-	private final static int TICKS_TO_HATCH = 200;
+	private final static int TICKS_TO_HATCH = 40;
 	private final static int EGG_WIDTH = 10;
 	private final static int EGG_HEIGHT = 10;
 	private final static Image DEFAULT_EGG_SPRITE = null, HATCHING_EGG_SPRITE = null;
@@ -31,6 +32,18 @@ public class Egg extends DynamicGameObject {
 		g2.fillOval((int)xPos,(int)yPos, width, height);
 		g2.setColor(Color.BLACK);
 	}
+	
+	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces, ArrayList<DynamicGameObject> keepList) {
+		System.out.println("H");
+		super.update(heroes, platformPieces);
+		ticksUntilHatch--;
+		if(ticksUntilHatch < 0 && !markedForRemoval) {
+			markToRemove();
+			Grunt newGrunt = new Grunt((int)this.xPos, (int)this.yPos);
+			keepList.add(newGrunt);
+		}
+	}
+	
 	
 	
 	

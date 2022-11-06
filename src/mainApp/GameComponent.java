@@ -39,11 +39,10 @@ public class GameComponent extends JComponent {
 		Grunt g = new Grunt(100,100);
 		dynamicGameObjects.add(g);
 		//testing adding enemies to frame
-		g.track(heroes.get(0));
+
 		Hopper h = new Hopper(200,100);
 		dynamicGameObjects.add(h);
-		h.moveUp();
-		h.moveRight();
+
 		//end testing adding enemies to frame
 		gameObjects.addAll(platformPieces);
 		gameObjects.addAll(dynamicGameObjects);
@@ -79,6 +78,9 @@ public class GameComponent extends JComponent {
 			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
 				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos(),System.currentTimeMillis())); 
 			}
+				if(dynamicGameObject instanceof Egg == true) {
+				((Egg)dynamicGameObject).update(heroKeepList, platformPieces, keepList);
+			}
 		}
 		for(Hero hero : heroes) {
 			hero.update(heroes, platformPieces);
@@ -93,9 +95,12 @@ public class GameComponent extends JComponent {
 		gameObjects.addAll(platformPieces); //re adds all platforms
 		gameObjects.addAll(heroes); //re adds non-removed heroes
 		
-		heroLivesLabel.setText("The number of lives remaining are " + heroes.get(0).getLives());
-		scoreLabel.setText("Score " + heroes.get(0).getScore());
-		
+		if(heroes.size() > 0) {
+			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives() + 1));
+			scoreLabel.setText("Score " + heroes.get(0).getScore());
+		} else {
+			// implement game over sequence
+		}
 
 		//TODO the game crashes when 0 lives are reach, we should create a game over screen and run it over our level screen
 
