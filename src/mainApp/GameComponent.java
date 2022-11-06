@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import gameObjects.*;
@@ -21,7 +22,13 @@ public class GameComponent extends JComponent {
 	private ArrayList<DynamicGameObject> dynamicGameObjects = new ArrayList<>();
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
 	
-	public GameComponent(ArrayList<PlatformPiece> platformPieces) {
+	JLabel scoreLabel = new JLabel();
+	JLabel heroLivesLabel = new JLabel();
+	
+	public GameComponent(ArrayList<PlatformPiece> platformPieces, JLabel score,JLabel lives) {
+		
+		this.scoreLabel = score;
+		this.heroLivesLabel = lives;
 
 		this.heroes.add(new Hero(20,150,KeyEvent.VK_UP,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT));
 		//temporarily removing 2nd hero to test enemy interactions for one hero
@@ -83,6 +90,10 @@ public class GameComponent extends JComponent {
 		gameObjects.addAll(eggList);
 		gameObjects.addAll(platformPieces); //re adds all platforms
 		gameObjects.addAll(heroes); //re adds non-removed heroes
+		
+		heroLivesLabel.setText("The number of lives remaining are " + heroes.get(0).getLives());
+		//TODO add the score here for scoreLabel similarly
+		//TODO the game crashes when 0 lives are reach, we should create a game over screen and run it over our level screen
 
 	}
 
