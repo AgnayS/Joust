@@ -91,4 +91,8 @@ public class Hero extends DynamicGameObject {
 	public int getLives() {
 		return this.lives;
 	}
+
+	public int getScore() {
+		return this.score;
+	}
 }

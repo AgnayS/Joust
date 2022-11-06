@@ -68,13 +68,15 @@ public class GameComponent extends JComponent {
 	public void updateGame() {
 		ArrayList<DynamicGameObject> keepList = new ArrayList<>();
 		ArrayList<Hero> heroKeepList = new ArrayList<>();
-		ArrayList<Egg> eggList = new ArrayList<>();
+		ArrayList<Enemy> enemyList = new ArrayList<>();
+		
 		for(DynamicGameObject dynamicGameObject : dynamicGameObjects) {
 			dynamicGameObject.update(heroes, platformPieces);
+			
 			if(!dynamicGameObject.shouldBeRemoved()) {
 				keepList.add(dynamicGameObject);
-			} else {
-				eggList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos(), 250));
+			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
+				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos(),System.currentTimeMillis())); 
 			}
 		}
 		for(Hero hero : heroes) {
@@ -87,12 +89,13 @@ public class GameComponent extends JComponent {
 		heroes = heroKeepList; //keeps heroes in the game
 		gameObjects = new ArrayList<GameObject>(); //refreshes all objects in the game
 		gameObjects.addAll(dynamicGameObjects); //re adds all non-removed objects
-		gameObjects.addAll(eggList);
 		gameObjects.addAll(platformPieces); //re adds all platforms
 		gameObjects.addAll(heroes); //re adds non-removed heroes
 		
 		heroLivesLabel.setText("The number of lives remaining are " + heroes.get(0).getLives());
-		//TODO add the score here for scoreLabel similarly
+		scoreLabel.setText("Score " + heroes.get(0).getScore());
+		
+
 		//TODO the game crashes when 0 lives are reach, we should create a game over screen and run it over our level screen
 
 	}

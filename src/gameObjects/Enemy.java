@@ -5,12 +5,14 @@ import java.awt.Image;
 public abstract class Enemy extends DynamicGameObject {
 	private final static int ENEMY_WIDTH = 20;
 	private final static int ENEMY_HEIGHT = 20;
+	private int ENEMY_SPEED = 0;
+	private int ENEMY_VERTICAL_SPEED=0;
 
-	private int pointValue;
 	
-	public Enemy(int xPos, int yPos, Image sprite, int pointValue) {
+	public Enemy(int xPos, int yPos, Image sprite, int enemySpeed, int enemyVerticalSpeed) {
 		super(ENEMY_WIDTH, ENEMY_HEIGHT, sprite, xPos, yPos);
-		this.pointValue = pointValue;
+		ENEMY_SPEED =  enemySpeed;
+		enemyVerticalSpeed = enemyVerticalSpeed;
 	}
 	@Override
 	public void handleHeroInteraction(Hero hero) {
@@ -19,12 +21,26 @@ public abstract class Enemy extends DynamicGameObject {
 			this.setxVel(-this.getxVel());
 		}
 		if(hero.getyPos() < this.getyPos() - 1){ //Hero Win! Adjusting for object bouncing when changing enemy y position			
-			hero.updateScore(100); //test point value of 100
-			this.markToRemove();
-			
+			this.markToRemove(); //Egg is being spawned inside of update game
 		}
 		if(hero.getyPos() > this.getyPos() - 1) {//Hero Loses!
 			hero.die(System.currentTimeMillis());
 		}
 	}
+	public void moveRight() {
+		xVel = ENEMY_SPEED;
+	}
+	
+	public void moveLeft() {
+		xVel = -ENEMY_SPEED;
+	}
+	
+	public void moveUp() {
+		yVel = -ENEMY_VERTICAL_SPEED;
+	}
+	public void moveDown()
+	{
+		yVel = ENEMY_VERTICAL_SPEED;
+	}
+	public void track(Hero hero) {}
 }
