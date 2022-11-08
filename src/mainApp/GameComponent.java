@@ -107,7 +107,7 @@ public class GameComponent extends JComponent {
 
 		}
 		if(heroes.size() == 1 && dynamicGameObjects.size() == 1) { //if hero is only dynamic game object, it means you beat the level and new platforms and enemies will be created
-			heroLivesLabel.setText("You beat this level!");
+			heroLivesLabel.setText("You beat the level!");
 		}
 	}
 
