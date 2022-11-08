@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ public class GameComponent extends JComponent {
 	
 	JLabel scoreLabel = new JLabel();
 	JLabel heroLivesLabel = new JLabel();
+	JButton restartButon = new JButton();
 	
 	public GameComponent(ArrayList<PlatformPiece> platformPieces, JLabel score,JLabel lives) {
 		
@@ -71,7 +73,6 @@ public class GameComponent extends JComponent {
 		
 		for(DynamicGameObject dynamicGameObject : dynamicGameObjects) {
 			dynamicGameObject.update(heroes, platformPieces);
-			
 			if(!dynamicGameObject.shouldBeRemoved()) {
 				keepList.add(dynamicGameObject);
 				if(heroes.size() != 0) { //if a hero is in play, enemies will track them
@@ -82,7 +83,8 @@ public class GameComponent extends JComponent {
 			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
 				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos())); 
 			}
-				if(dynamicGameObject instanceof Egg == true) {
+
+			if(dynamicGameObject instanceof Egg == true) {
 				((Egg)dynamicGameObject).update(heroKeepList, platformPieces, keepList);
 			}
 		}
@@ -90,10 +92,6 @@ public class GameComponent extends JComponent {
 			hero.update(heroes, platformPieces);
 			if(!hero.shouldBeRemoved()) {
 				heroKeepList.add(hero);
-			} else {
-				//redraw platform, spawn new enemies
-				heroes.get(0).setyPos(400);
-				heroes.get(0).setxPos(100);
 			}
 		}
 		dynamicGameObjects = keepList; //updates list of dynamic game objects to keep in the game
@@ -103,15 +101,14 @@ public class GameComponent extends JComponent {
 		gameObjects.addAll(platformPieces); //re adds all platforms
 		gameObjects.addAll(heroes); //re adds non-removed heroes
 		
-		if(heroes.size() > 0) {
+		if(heroes.size() > 0) { //while a hero is in play, update lives and score
 			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives() + 1));
 			scoreLabel.setText("Score " + heroes.get(0).getScore());
-		} else {
-			// implement game over sequence
+
 		}
-
-		//TODO the game crashes when 0 lives are reach, we should create a game over screen and run it over our level screen
-
+		if(heroes.size() == 1 && dynamicGameObjects.size() == 1) { //if hero is only dynamic game object, it means you beat the level and new platforms and enemies will be created
+			heroLivesLabel.setText("You beat this level!");
+		}
 	}
 
 	public void drawScreen() {
