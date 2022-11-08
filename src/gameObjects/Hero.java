@@ -95,4 +95,9 @@ public class Hero extends DynamicGameObject {
 	public int getScore() {
 		return this.score;
 	}
+
+	public void setxPos(int newXPos) {
+		this.xPos = newXPos;
+		
+	}
 }

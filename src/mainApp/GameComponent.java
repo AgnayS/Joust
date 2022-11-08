@@ -74,9 +74,13 @@ public class GameComponent extends JComponent {
 			
 			if(!dynamicGameObject.shouldBeRemoved()) {
 				keepList.add(dynamicGameObject);
-				dynamicGameObject.track(heroes.get(0));
+				if(heroes.size() != 0) { //if a hero is in play, enemies will track them
+					dynamicGameObject.track(heroes.get(0));
+				} else {
+					heroLivesLabel.setText("Game Over! All Lives Lost!");
+				}
 			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
-				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos(),System.currentTimeMillis())); 
+				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos())); 
 			}
 				if(dynamicGameObject instanceof Egg == true) {
 				((Egg)dynamicGameObject).update(heroKeepList, platformPieces, keepList);
@@ -86,6 +90,10 @@ public class GameComponent extends JComponent {
 			hero.update(heroes, platformPieces);
 			if(!hero.shouldBeRemoved()) {
 				heroKeepList.add(hero);
+			} else {
+				//redraw platform, spawn new enemies
+				heroes.get(0).setyPos(400);
+				heroes.get(0).setxPos(100);
 			}
 		}
 		dynamicGameObjects = keepList; //updates list of dynamic game objects to keep in the game

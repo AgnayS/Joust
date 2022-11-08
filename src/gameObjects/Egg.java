@@ -15,11 +15,8 @@ public class Egg extends DynamicGameObject {
 	private int ticksUntilHatch;
 	public long creationTime;
 
-	public Egg(double xPos, double yPos, long creationTime) {
+	public Egg(double xPos, double yPos) {
 		super(EGG_WIDTH, EGG_HEIGHT, DEFAULT_EGG_SPRITE, xPos, yPos);
-		this.creationTime = creationTime;
-		
-		System.out.println("Egg Created");
 		this.ticksUntilHatch = TICKS_TO_HATCH;
 	}
 	public void handleHeroInteraction(Hero hero) {			
@@ -34,7 +31,6 @@ public class Egg extends DynamicGameObject {
 	}
 	
 	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces, ArrayList<DynamicGameObject> keepList) {
-		System.out.println("H");
 		super.update(heroes, platformPieces);
 		ticksUntilHatch--;
 		if(ticksUntilHatch < 0 && !markedForRemoval) {
