@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.Border;
@@ -35,11 +36,13 @@ public class MainApp {
 	private static final int DELAY = 50;
 
 	public static void main(String[] args) {
+		JOptionPane.showInputDialog("Welcome to JOUST! Please Enter your name to get started");
+
 		MainApp mainApp = new MainApp();
 		mainApp.runApp(0);
 	} // main
 
-	private void runApp(int levelIndex) {
+	private void runApp(int levelIndex) {	
 		ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
 		File level = new File(LEVEL_PATHS[levelIndex]);
 		BufferedReader br = null;
@@ -54,6 +57,8 @@ public class MainApp {
 		int width = 0;
 		int j = 0;
 		JFrame frame = new JFrame("Joust!");
+		
+		
 
 		JPanel scorePanel = new JPanel(); // Create The Two Jpanels and Jlabels.
 		JLabel scoreLabel = new JLabel("The score is: "); // Add The Jlabels to the panel

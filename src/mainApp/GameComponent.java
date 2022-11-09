@@ -1,6 +1,8 @@
 package mainApp;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
@@ -64,6 +66,15 @@ public class GameComponent extends JComponent {
 		for (GameObject gameObject: gameObjects) {
 			gameObject.drawOn(g2d);
 		}
+		
+		if(heroes.size() == 0) {
+			g.setColor(Color.black);
+			g.drawRect(0, 0, 3840, 2160);
+			g.fillRect(0, 0, 3840, 2160);
+			g.setFont(new Font("Arial", 0, 120));
+			g.setColor(Color.cyan);
+			g.drawString("Game Over!", 120, 168);
+		}
 	}
 	
 	public void updateGame() {
@@ -108,6 +119,7 @@ public class GameComponent extends JComponent {
 		}
 		if(heroes.size() == 1 && dynamicGameObjects.size() == 1) { //if hero is only dynamic game object, it means you beat the level and new platforms and enemies will be created
 			heroLivesLabel.setText("You beat the level!");
+			
 		}
 	}
 

@@ -77,6 +77,7 @@ public class Hero extends DynamicGameObject {
 	public void die(long timeOfDeath) {
 		if(this.lives == 3) {
 			this.lives --;
+			
 			this.previousDeathTime = timeOfDeath;
 		}
 		if((timeOfDeath - this.previousDeathTime) / 1000 > 3) {
