@@ -40,7 +40,7 @@ public class GameComponent extends JComponent {
 		this.platformPieces = platformPieces;
 
 		dynamicGameObjects.addAll(heroes);
-		Grunt g = new Grunt(100,100);
+		Grunt g = new Grunt(100,250);
 		dynamicGameObjects.add(g);
 		//testing adding enemies to frame
 
@@ -113,7 +113,7 @@ public class GameComponent extends JComponent {
 		gameObjects.addAll(heroes); //re adds non-removed heroes
 		
 		if(heroes.size() > 0) { //while a hero is in play, update lives and score
-			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives() + 1));
+			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives()));
 			scoreLabel.setText("Score " + heroes.get(0).getScore());
 
 		}

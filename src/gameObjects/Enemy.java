@@ -23,7 +23,7 @@ public abstract class Enemy extends DynamicGameObject {
 		if(hero.getyPos() < this.getyPos() - 1){ //Hero Win! Adjusting for object bouncing when changing enemy y position			
 			this.markToRemove(); //Egg is being spawned inside of update game
 		}
-		if(hero.getyPos() > this.getyPos() - 1) {//Hero Loses!
+		if(hero.getyPos() > this.getyPos()) {//Hero Loses!
 			hero.die(System.currentTimeMillis());
 		}
 	}
