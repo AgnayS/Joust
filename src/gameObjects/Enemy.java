@@ -18,6 +18,10 @@ public abstract class Enemy extends DynamicGameObject {
 	public void handleHeroInteraction(Hero hero) {
 
 		if(hero.getyPos() == this.getyPos()) { //No winner!IN ORDER FOR BOUNCING THIS NEEDS TO BE THE FIRST IF
+			if(this.getxVel()>0)
+			this.setxPos(-150+this.getxPos());
+			else
+				this.setxPos(150+this.getxPos());
 			this.setxVel(-this.getxVel());
 		}
 		if(hero.getyPos() < this.getyPos() - 1){ //Hero Win! Adjusting for object bouncing when changing enemy y position			

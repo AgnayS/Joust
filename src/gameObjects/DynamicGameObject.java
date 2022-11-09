@@ -87,6 +87,9 @@ public abstract class DynamicGameObject extends GameObject {
 	public void setyPos(double yPos) {
 		this.yPos = yPos;
 	}
+	public void setxPos(double xPos) {
+		this.xPos = xPos;
+	}
 
 	protected void adjustPosition(int[] positionIncrement) {
 		xPos += positionIncrement[0];
