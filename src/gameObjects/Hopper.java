@@ -13,13 +13,11 @@ public class Hopper extends Enemy{
 	
 	public Hopper(int xPos, int yPos) {
 		super(xPos, yPos, MOVING_LEFT_ENEMY_SPRITE, HOPPER_SPEED, HOPPER_VERTICAL_SPEED);
-		
-		
 	}
 	@Override
 	public void drawOn(Graphics2D g2) {
 		g2.setColor(Color.BLUE);
-		g2.fillOval((int)xPos,(int)yPos, width, height);
+		g2.fillRect((int)xPos,(int)yPos, width, height);
 		g2.setColor(Color.BLACK);
 	}
 	

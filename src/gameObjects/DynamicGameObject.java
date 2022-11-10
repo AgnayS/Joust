@@ -42,9 +42,9 @@ public abstract class DynamicGameObject extends GameObject {
 	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces) {
 
 		if (xPos > MAX_X + this.width * 2) {
-			xPos = -this.width * .9;
+			xPos = -this.width;
 		}
-		if (xPos < -this.width * .9) {
+		if (xPos < -this.width) {
 			xPos = MAX_X + this.width * 2;
 		}
 		xPos += xVel;

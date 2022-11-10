@@ -17,7 +17,7 @@ public class Grunt extends Enemy{
 	@Override
 	public void drawOn(Graphics2D g2) {
 		g2.setColor(Color.RED);
-		g2.fillOval((int)xPos,(int)yPos, width, height);
+		g2.fillRoundRect((int)xPos,(int)yPos, width, height,10,10);
 		g2.setColor(Color.BLACK);
 	}
 	
