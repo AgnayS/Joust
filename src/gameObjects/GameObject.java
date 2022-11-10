@@ -6,21 +6,26 @@ import java.awt.Image;
 public abstract class GameObject {
 
 	protected final int width, height;
-	protected final Image sprite;
-
+	private final static double PIXELS_PER_SPRITE_PIXEL = 1.3333;
+	
+	protected Image spriteSheet;
 	protected double xPos, yPos;
 	protected boolean markedForRemoval;
+	protected int spriteNumber;
 
-	public GameObject(int width, int height, Image sprite, double xPos, double yPos) {
+	
+	
+	public GameObject(int width, int height, Image spriteSheet, double xPos, double yPos) {
 		this.width = width;
 		this.height = height;
 		this.xPos = xPos;
 		this.yPos = yPos;
-		this.sprite = sprite;
+		this.spriteSheet = spriteSheet;
 	}
 
 	public void drawOn(Graphics2D g2) {
-		g2.drawImage(sprite, (int) xPos, (int) yPos, width, height, 0, 0, sprite.getWidth(null), sprite.getHeight(null), null);
+		g2.drawImage(spriteSheet, (int) xPos, (int) yPos, (int) xPos + width, (int) yPos + height, (int)(width/PIXELS_PER_SPRITE_PIXEL)*spriteNumber, 0, (int)(height/PIXELS_PER_SPRITE_PIXEL)*(spriteNumber+1), 48, null);
+		System.out.print("s");
 	}
 	
 	public void markToRemove() {
@@ -48,6 +53,6 @@ public abstract class GameObject {
 	}
 
 	public Image getSprite() {
-		return sprite;
+		return spriteSheet;
 	}
 }

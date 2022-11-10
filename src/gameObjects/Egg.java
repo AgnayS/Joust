@@ -6,7 +6,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 public class Egg extends DynamicGameObject {
-	private final int TICKS_TO_HATCH = 40;
+	private final static int TICKS_TO_HATCH = 40;
 	private final static int EGG_WIDTH = 10;
 	private final static int EGG_HEIGHT = 10;
 	private final static Image DEFAULT_EGG_SPRITE = null, HATCHING_EGG_SPRITE = null;
@@ -25,7 +25,7 @@ public class Egg extends DynamicGameObject {
 	}
 	@Override
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.yellow);
+		g2.setColor(Color.GRAY);
 		g2.fillOval((int)xPos,(int)yPos, width, height);
 		g2.setColor(Color.BLACK);
 	}

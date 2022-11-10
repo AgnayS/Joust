@@ -13,20 +13,24 @@ public class Hopper extends Enemy{
 	
 	public Hopper(int xPos, int yPos) {
 		super(xPos, yPos, MOVING_LEFT_ENEMY_SPRITE, HOPPER_SPEED, HOPPER_VERTICAL_SPEED);
+		
+		
 	}
 	@Override
 	public void drawOn(Graphics2D g2) {
 		g2.setColor(Color.BLUE);
-		g2.fillRect((int)xPos,(int)yPos, width, height);
+		g2.fillOval((int)xPos,(int)yPos, width, height);
 		g2.setColor(Color.BLACK);
 	}
 	
+	@Override
 	public void track(Hero hero) {
+		
 		if(hero.getxPos() > this.getxPos()) {
 			this.setxVel(HOPPER_SPEED);
 		}
 		if(hero.getxPos() < this.getxPos()){
-			this.setxVel(HOPPER_SPEED); //make sure it cannot go backwards in the x direction
+			this.setxVel(-HOPPER_SPEED); //make sure it cannot go backwards in the x direction
 		}
 		if(hero.getyPos()-10< this.getyPos()) {
 			this.setyVel(-1.2*(HOPPER_VERTICAL_SPEED)); 
