@@ -39,7 +39,7 @@ public class MainApp {
 	public static final int LEVEL_WIDTH = 20;
 
 	public static void main(String[] args) {
-		JOptionPane.showInputDialog("Welcome to JOUST! Please Enter your name to get started");
+		//JOptionPane.showInputDialog("Welcome to JOUST! Please Enter your name to get started");
 
 		MainApp mainApp = new MainApp();
 		mainApp.runApp(0);
