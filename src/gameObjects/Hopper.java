@@ -31,10 +31,10 @@ public class Hopper extends Enemy{
 		if(hero.getxPos() < this.getxPos()){
 			this.setxVel(HOPPER_SPEED); //make sure it cannot go backwards in the x direction
 		}
-		if(hero.getyPos() < this.getyPos()) {
+		if(hero.getyPos()-10< this.getyPos()) {
 			this.setyVel(-1.2*(HOPPER_VERTICAL_SPEED)); 
 		}
-		if(hero.getyPos() > this.getyPos()) {
+		if(hero.getyPos()-10> this.getyPos()) {
 			this.setyVel(1.2*Math.abs(HOPPER_VERTICAL_SPEED));
 		}
 		
