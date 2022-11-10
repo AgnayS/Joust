@@ -36,8 +36,6 @@ public class MainApp {
 	private static final int DELAY = 50;
 
 	public static void main(String[] args) {
-		JOptionPane.showInputDialog("Welcome to JOUST! Please Enter your name to get started");
-
 		MainApp mainApp = new MainApp();
 		mainApp.runApp(0);
 	} // main
@@ -59,12 +57,16 @@ public class MainApp {
 		JFrame frame = new JFrame("Joust!");
 		
 		
-
+		JPanel translucentBackground = new JPanel();
+		translucentBackground.setBackground(new Color(115,168,214,100));
+		
+		
 		JPanel scorePanel = new JPanel(); // Create The Two Jpanels and Jlabels.
 		JLabel scoreLabel = new JLabel("The score is: "); // Add The Jlabels to the panel
 		scorePanel.add(scoreLabel);
 		scorePanel.setBackground(Color.cyan);
 		frame.add(scorePanel, BorderLayout.NORTH);// Add the panels to the frame
+		frame.add(translucentBackground, BorderLayout.CENTER);
 
 		JPanel heroLivesPanel = new JPanel();
 		JLabel heroLivesLabel = new JLabel("Lives left: ");

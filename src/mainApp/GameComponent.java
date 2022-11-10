@@ -24,12 +24,13 @@ public class GameComponent extends JComponent {
 	private ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
 	private ArrayList<DynamicGameObject> dynamicGameObjects = new ArrayList<>();
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
-	
+
 	JLabel scoreLabel = new JLabel();
 	JLabel heroLivesLabel = new JLabel();
 	JButton restartButon = new JButton();
 	
 	public GameComponent(ArrayList<PlatformPiece> platformPieces, JLabel score,JLabel lives) {
+		
 		
 		this.scoreLabel = score;
 		this.heroLivesLabel = lives;
