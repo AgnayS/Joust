@@ -27,7 +27,7 @@ import gameObjects.PlatformPiece;
 /**
  * Class: MainApp
  * 
- * @author Put your team name here <br>
+ * @author Team F_23_A_107 <br>
  *         Purpose: Top level class for CSSE220 Project containing main method
  *         <br>
  *         Restrictions: None
@@ -39,7 +39,6 @@ public class MainApp {
 	public static final int LEVEL_WIDTH = 20;
 
 	public static void main(String[] args) {
-		//JOptionPane.showInputDialog("Welcome to JOUST! Please Enter your name to get started");
 
 		MainApp mainApp = new MainApp();
 		mainApp.runApp(0);
