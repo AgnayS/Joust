@@ -25,7 +25,6 @@ public abstract class GameObject {
 
 	public void drawOn(Graphics2D g2) {
 		g2.drawImage(spriteSheet, (int) xPos, (int) yPos, (int) xPos + width, (int) yPos + height, (int)(width/PIXELS_PER_SPRITE_PIXEL)*spriteNumber, 0, (int)(height/PIXELS_PER_SPRITE_PIXEL)*(spriteNumber+1), 48, null);
-		System.out.print("s");
 	}
 	
 	public void markToRemove() {
