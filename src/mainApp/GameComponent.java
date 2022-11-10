@@ -40,7 +40,7 @@ public class GameComponent extends JComponent {
 		this.platformPieces = platformPieces;
 
 		dynamicGameObjects.addAll(heroes);
-		Grunt g = new Grunt(100,250);
+		Grunt g = new Grunt(200,250);
 		dynamicGameObjects.add(g);
 		//testing adding enemies to frame
 

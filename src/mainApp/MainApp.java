@@ -32,7 +32,7 @@ import gameObjects.PlatformPiece;
  *         Restrictions: None
  */
 public class MainApp {
-	private final static String[] LEVEL_PATHS = new String[] { "level2.txt", "level1.txt","badLevel.txt"  };
+	private final static String[] LEVEL_PATHS = new String[] { "level2.txt", "level1.txt","level3.txt","level4.txt","badLevel.txt"  };
 	private static final int DELAY = 50;
 
 	public static void main(String[] args) {
