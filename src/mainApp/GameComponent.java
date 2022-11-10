@@ -40,6 +40,7 @@ public class GameComponent extends JComponent {
 
 		dynamicGameObjects.addAll(heroes);
 		Grunt g = new Grunt(200,250);
+		
 		dynamicGameObjects.add(g);
 		//testing adding enemies to frame
 
@@ -83,6 +84,8 @@ public class GameComponent extends JComponent {
 			g.setFont(new Font("Comic Sans MS", 0, 120));
 			g.setColor(Color.cyan);
 			g.drawString("Level Won!", 140, 168);
+			g.setFont(new Font("Comic Sans MS", 0, 40));
+			g.drawString("Press U to continue", 140, 210);
 		}
 	}
 	

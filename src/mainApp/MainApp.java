@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,7 +34,7 @@ import gameObjects.PlatformPiece;
  */
 public class MainApp {
 
-	private final static String[] LEVEL_PATHS = new String[] { "level2.txt", "level1.txt","level3.txt","level4.txt","badLevel.txt"  };
+	private final static String[] LEVEL_PATHS = new String[] { "level1.txt", "level2.txt","level3.txt","level4.txt","badLevel.txt"  };
 	private static final int DELAY = 50;
 
 	public static void main(String[] args) {
@@ -59,7 +60,7 @@ public class MainApp {
 		
 		
 		JPanel translucentBackground = new JPanel();
-		translucentBackground.setBackground(new Color(115,168,214,100));
+		translucentBackground.setBackground(new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256),100));
 		
 		
 		JPanel scorePanel = new JPanel(); // Create The Two Jpanels and Jlabels.
