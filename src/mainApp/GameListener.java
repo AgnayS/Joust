@@ -14,7 +14,7 @@ public class GameListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.gameComponent.updateGame();
-		this.gameComponent.drawScreen();
+		this.gameComponent.drawScreen();;
 	}
 
 }
