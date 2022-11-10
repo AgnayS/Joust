@@ -29,7 +29,6 @@ public class GameComponent extends JComponent {
 	
 	public GameComponent(ArrayList<PlatformPiece> platformPieces, JLabel score,JLabel lives) {
 		
-		
 		this.scoreLabel = score;
 		this.heroLivesLabel = lives;
 
@@ -37,16 +36,20 @@ public class GameComponent extends JComponent {
 		//temporarily removing 2nd hero to test enemy interactions for one hero
 		//this.heroes.add(new Hero(20,20,KeyEvent.VK_S,KeyEvent.VK_Z,KeyEvent.VK_C));
 		this.platformPieces = platformPieces;
-
 		dynamicGameObjects.addAll(heroes);
-		Grunt g = new Grunt(200,250);
 		
-		dynamicGameObjects.add(g);
-		//testing adding enemies to frame
-
-		Hopper h = new Hopper(200,100);
-		dynamicGameObjects.add(h);
-
+		for (int i = 0; i< Math.floor(Math.random() * (4 - 1) + 1);i++)
+		{
+			Grunt g = new Grunt((int)Math.floor(Math.random() * (910 - 50) + 50),0);
+			dynamicGameObjects.add(g);
+		}
+		
+		for (int i = 0; i< Math.floor(Math.random() * (4 - 1) + 1);i++)
+		{
+			Hopper h = new Hopper((int)Math.floor(Math.random() * (910 - 50) + 50),0);
+			dynamicGameObjects.add(h);
+		}
+		
 		//end testing adding enemies to frame
 		gameObjects.addAll(platformPieces);
 		gameObjects.addAll(dynamicGameObjects);
@@ -73,10 +76,12 @@ public class GameComponent extends JComponent {
 			g.fillRect(0, 0, 3840, 2160);
 			g.setFont(new Font("Comic Sans MS", 0, 120));
 			g.setColor(Color.cyan);
-			g.drawString("Game Over!", 120, 168);
+			g.drawString("You lost!", 120, 168);
+			g.setFont(new Font("Comic Sans MS", 0, 40));
+			g.drawString("Press U to continue", 140, 210);
 		}
 		
-		else if(heroes.get(0).getScore()==500)
+		else if(heroes.size() == 1 && dynamicGameObjects.size() == 1)
 		{
 			g.setColor(Color.black);
 			g.drawRect(0, 0, 3840, 2160);
