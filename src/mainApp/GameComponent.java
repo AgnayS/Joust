@@ -18,8 +18,6 @@ import javax.swing.JTextField;
 import gameObjects.*;
 
 public class GameComponent extends JComponent {
-	private final static double TICK_LENGTH = 0.05;
-	
 	private ArrayList<Hero> heroes = new ArrayList<>();
 	private ArrayList<PlatformPiece> platformPieces = new ArrayList<>();
 	private ArrayList<DynamicGameObject> dynamicGameObjects = new ArrayList<>();
@@ -72,9 +70,19 @@ public class GameComponent extends JComponent {
 			g.setColor(Color.black);
 			g.drawRect(0, 0, 3840, 2160);
 			g.fillRect(0, 0, 3840, 2160);
-			g.setFont(new Font("Arial", 0, 120));
+			g.setFont(new Font("Comic Sans MS", 0, 120));
 			g.setColor(Color.cyan);
 			g.drawString("Game Over!", 120, 168);
+		}
+		
+		else if(heroes.get(0).getScore()==500)
+		{
+			g.setColor(Color.black);
+			g.drawRect(0, 0, 3840, 2160);
+			g.fillRect(0, 0, 3840, 2160);
+			g.setFont(new Font("Comic Sans MS", 0, 120));
+			g.setColor(Color.cyan);
+			g.drawString("Level Won!", 140, 168);
 		}
 	}
 	
@@ -90,7 +98,7 @@ public class GameComponent extends JComponent {
 				if(heroes.size() != 0) { //if a hero is in play, enemies will track them
 					dynamicGameObject.track(heroes.get(0));
 				} else {
-					heroLivesLabel.setText("Game Over! All Lives Lost!");
+					heroLivesLabel.setText("All Lives Lost!");
 				}
 			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
 				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos())); 
@@ -114,7 +122,7 @@ public class GameComponent extends JComponent {
 		gameObjects.addAll(heroes); //re adds non-removed heroes
 		
 		if(heroes.size() > 0) { //while a hero is in play, update lives and score
-			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives()));
+			heroLivesLabel.setText("The number of lives remaining are " + (heroes.get(0).getLives()+1));
 			scoreLabel.setText("Score " + heroes.get(0).getScore());
 
 		}

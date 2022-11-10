@@ -6,7 +6,6 @@ import java.awt.Image;
 //initial creation of Hopper as a subclass of enemy
 public class Hopper extends Enemy{
 
-	private final static int DEFAULT_POINT_VALUE = 10;
 	private final static Image MOVING_LEFT_ENEMY_SPRITE = null, MOVING_RIGHT_ENEMY_SPRITE = null, JUMPING_LEFT_ENEMY_SPRITE = null, JUMPING_RIGHT_ENEMY_SPRITE = null, FALLING_LEFT_ENEMY_SPRITE = null, FALLING_RIGHT_ENEMY_SPRITE = null;
 	
 	private final static int  HOPPER_SPEED = 15; //default grunt speed for initial implementation

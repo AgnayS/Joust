@@ -26,7 +26,7 @@ public class Hero extends DynamicGameObject {
 
 	public Hero(int xPos, int yPos, int upKey, int leftKey, int rightKey) {
 		super(HERO_WIDTH, HERO_HEIGHT, MOVING_RIGHT_HERO_SPRITE, xPos, yPos);
-		this.lives = 3;
+		this.lives = 2;
 		this.leftKey = leftKey;
 		this.rightKey = rightKey;
 		this.upKey = upKey;

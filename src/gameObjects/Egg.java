@@ -6,7 +6,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 public class Egg extends DynamicGameObject {
-	private final static int TICKS_TO_HATCH = 40;
+	private final int TICKS_TO_HATCH = 40;
 	private final static int EGG_WIDTH = 10;
 	private final static int EGG_HEIGHT = 10;
 	private final static Image DEFAULT_EGG_SPRITE = null, HATCHING_EGG_SPRITE = null;
