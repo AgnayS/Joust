@@ -14,7 +14,7 @@ public abstract class Enemy extends DynamicGameObject {
 	public Enemy(int xPos, int yPos, Image sprite, int enemySpeed, int enemyVerticalSpeed) {
 		super(ENEMY_WIDTH, ENEMY_HEIGHT, sprite, xPos, yPos);
 		ENEMY_SPEED =  enemySpeed;
-		enemyVerticalSpeed = enemyVerticalSpeed;
+		this.ENEMY_VERTICAL_SPEED = enemyVerticalSpeed;
 	}
 	@Override
 	public void handleHeroInteraction(Hero hero) {

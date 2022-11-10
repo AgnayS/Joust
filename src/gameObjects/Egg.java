@@ -25,7 +25,7 @@ public class Egg extends DynamicGameObject {
 	}
 	@Override
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.GRAY);
+		g2.setColor(Color.yellow);
 		g2.fillOval((int)xPos,(int)yPos, width, height);
 		g2.setColor(Color.BLACK);
 	}
