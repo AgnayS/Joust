@@ -20,7 +20,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import gameObjects.*;
-
+/**
+ * GameComponent is the driver for all things being pasted onto the frame. It keeps a list of all game objects an platforms to update on the screen.
+ * Updategame() handles a major portion of the graphics handling, if an object is marked for removal it will not be re-added to the list of objects to be created for the game.
+ * Updategame() handles updating the score and lives labels as well as game end or game continue such as moving to the next level when all enemies are defeated.
+ * 
+ * @author jonescm
+ *
+ */
 public class GameComponent extends JComponent {
 	
 	private final static double TICK_LENGTH = 0.05;

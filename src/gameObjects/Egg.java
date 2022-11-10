@@ -4,7 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.ArrayList;
-
+/**
+ * Egg is an extension of dynamic game object, unlike enemy the egg will not be tracking the hero and is how the hero will increase its score.
+ * When an egg is not destroyed by a hero collision in time based on its Ticks_To_Hatch, a new grunt is created where the egg was located
+ * 
+ * @author jonescm
+ *
+ */
 public class Egg extends DynamicGameObject {
 	private final static int TICKS_TO_HATCH = 40;
 	private final static int EGG_WIDTH = 10;
@@ -20,7 +26,7 @@ public class Egg extends DynamicGameObject {
 		this.ticksUntilHatch = TICKS_TO_HATCH;
 	}
 	public void handleHeroInteraction(Hero hero) {			
-		hero.updateScore(this.pointValue); //test point value of 100
+		hero.updateScore(this.pointValue); //updates the hero it collides with score
 		this.markToRemove();
 	}
 	@Override

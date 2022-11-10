@@ -4,7 +4,15 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import mainApp.MainApp;
-
+/**
+ * Dynamic gameobject is an extension of gameObject
+ * it has collision direction which will move the object based on what it collides with and where
+ * movement of all objects is stored in this class, gravity is implemented in this class
+ * Hero interactions are handled in this class.
+ * Bouncing based on collision is handled in this class
+ * @author jonescm
+ *
+ */
 public abstract class DynamicGameObject extends GameObject {
 
 	private final static double GRAVITATIONAL_ACCELERATION = 1;

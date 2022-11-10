@@ -43,7 +43,11 @@ public class MainApp {
 		MainApp mainApp = new MainApp();
 		mainApp.runApp(0);
 	} // main
-
+/**
+ * runApp is the framework for the game's handling and functionality, it creates the score panel and label, background, and the frame in which we will update our game.
+ * 
+ * @param levelIndex
+ */
 	private void runApp(int levelIndex) {	
 		String currentLine;
 		JFrame frame = new JFrame("Joust!");
@@ -93,7 +97,10 @@ public class MainApp {
 		frame.addKeyListener(keyAdapter);
 		frame.validate();
 	}
-	
+	/**
+	 * LoadLevels() reads through the text files and pulls the information needed to create the platforms
+	 * @return
+	 */
 	public static ArrayList<ArrayList<PlatformPiece>> loadLevels(){
 		ArrayList<ArrayList<PlatformPiece>> levels = new ArrayList<>();
 		for(String path : LEVEL_PATHS) {
@@ -107,7 +114,14 @@ public class MainApp {
 		}
 		return levels;
 	}
-
+	/**
+	 * load level takes the path provided and creates the platforms for each level as well as enemy spawn locations
+	 * @param path
+	 * @return
+	 * @throws IOException
+	 * @throws InvalidLevelFormatException
+	 * @throws FileNotFoundException
+	 */
 	private static ArrayList<PlatformPiece> loadLevel(String path) throws IOException, InvalidLevelFormatException, FileNotFoundException {
 		BufferedReader br;
 		try{

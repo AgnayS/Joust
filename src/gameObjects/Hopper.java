@@ -3,7 +3,11 @@ package gameObjects;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-//initial creation of Hopper as a subclass of enemy
+/**
+ * A subclass of enemy, Hopper is designed to track the Hero's y position and match or get above it
+ * @author jonescm
+ *
+ */
 public class Hopper extends Enemy{
 
 	private final static Image MOVING_LEFT_ENEMY_SPRITE = null, MOVING_RIGHT_ENEMY_SPRITE = null, JUMPING_LEFT_ENEMY_SPRITE = null, JUMPING_RIGHT_ENEMY_SPRITE = null, FALLING_LEFT_ENEMY_SPRITE = null, FALLING_RIGHT_ENEMY_SPRITE = null;

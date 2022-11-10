@@ -2,7 +2,11 @@ package mainApp;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
+/**
+ * Invalid level format exception, handles all known cases where an exception within the game (such as a bad level format) may occur and handles it
+ * @author jonescm
+ *
+ */
 public class InvalidLevelFormatException extends Exception
 {
 	

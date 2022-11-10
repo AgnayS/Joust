@@ -7,7 +7,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
-
+/**
+ * Hero is an extension of dynamic game object. It takes in an initial position as well as the keys the hero's movement are bound to
+ * Hero has a die() function which relates its lives to whether it should be markedForRemoval
+ * Hero has a keylistener to take inputs from the player
+ * @author jonescm
+ *
+ */
 public class Hero extends DynamicGameObject {
 	private final static int HERO_WIDTH = 32;
 	private final static int HERO_HEIGHT = 32;

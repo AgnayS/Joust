@@ -3,7 +3,13 @@ package gameObjects;
 import java.awt.Image;
 
 import mainApp.MainApp;
-//creation of Enemy as an abstract class
+/**
+ * Enemy is an extension of dynamic game object. Enemies have certain speed based on their creation as well as a hero Interection.
+ * Hero Interacion handles who wins when Hero and Enemy collide.
+ * Enemy also has a track function
+ * @author jonescm
+ *
+ */
 public abstract class Enemy extends DynamicGameObject {
 	private final static int ENEMY_WIDTH = 32;
 	private final static int ENEMY_HEIGHT = 32;
