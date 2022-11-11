@@ -2,6 +2,7 @@ package gameObjects;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.awt.Color;
 /**
  * A subclass of enemy, Drone will track the hero and fly just above the hero to continuously kill the hero
@@ -24,10 +25,18 @@ public class Drone extends Enemy{
 		g2.setColor(Color.BLACK);
 	}
 	
-
+	@Override
 	public void track(Hero hero) {
 		xVel = DRONE_SPEED*(hero.getxPos()-xPos)/Math.hypot(hero.getxPos()-xPos, hero.getyPos()-20-yPos);
 		yVel = DRONE_SPEED*(hero.getyPos()-20-yPos)/Math.hypot(hero.getxPos()-xPos, hero.getyPos()-20-yPos);
 	}
+	
+	@Override
+	public ArrayList<DynamicGameObject> getRemnants(){
+		ArrayList<DynamicGameObject> output = super.getRemnants();
+		output.add(new Heart(xPos,yPos));
+		return output;
+	}
+	
 	
 }

@@ -124,4 +124,8 @@ public abstract class DynamicGameObject extends GameObject {
 	public void setBounceCooldown(int bounceCooldown) {
 		this.bounceCooldown = bounceCooldown;
 	}
+	
+	public ArrayList<DynamicGameObject> getRemnants(){
+		return new ArrayList<>();
+	}
 }

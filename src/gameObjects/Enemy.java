@@ -1,6 +1,7 @@
 package gameObjects;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 import mainApp.MainApp;
 /**
@@ -59,5 +60,12 @@ public abstract class Enemy extends DynamicGameObject {
 		if(yPos + height > (MainApp.LEVEL_HEIGHT-1)*PlatformPiece.DEFAULT_HEIGHT+10) {
 			yVel = -10;
 		}	
+	}
+	
+	@Override
+	public ArrayList<DynamicGameObject> getRemnants(){
+		ArrayList<DynamicGameObject> output = new ArrayList<>();
+		output.add(new Egg(xPos, yPos));
+		return output;
 	}
 }

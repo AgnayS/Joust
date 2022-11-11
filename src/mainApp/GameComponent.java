@@ -161,12 +161,8 @@ public class GameComponent extends JComponent {
 				} else {
 					heroLivesLabel.setText("Game Over! All Lives Lost!");
 				}
-			} else if(dynamicGameObject instanceof Egg == false){ //had to implement instanceof to remove egg since when killing the egg would run this loop again and re-create an endless egg loop
-				keepList.add(new Egg(dynamicGameObject.getxPos(), dynamicGameObject.getyPos())); 
-			}
-
-			if(dynamicGameObject instanceof Egg == true) {
-				((Egg)dynamicGameObject).update(heroKeepList, platformPieces, keepList);
+			} else {
+				keepList.addAll(dynamicGameObject.getRemnants());
 			}
 		}
 		for(Hero hero : heroes) {

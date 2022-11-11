@@ -36,16 +36,23 @@ public class Egg extends DynamicGameObject {
 		g2.setColor(Color.BLACK);
 	}
 	
-	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces, ArrayList<DynamicGameObject> keepList) {
+	@Override	
+	public void update(ArrayList<Hero> heroes, ArrayList<PlatformPiece> platformPieces) {
 		super.update(heroes, platformPieces);
 		ticksUntilHatch--;
 		if(ticksUntilHatch < 0 && !markedForRemoval) {
 			markToRemove();
-			Grunt newGrunt = new Grunt((int)this.xPos, (int)this.yPos);
-			keepList.add(newGrunt);
 		}
 	}
 	
+	@Override
+	public ArrayList<DynamicGameObject> getRemnants(){
+		ArrayList<DynamicGameObject> output = new ArrayList<>();
+		if(ticksUntilHatch == -1) {
+			output.add(new Grunt((int)this.xPos, (int)this.yPos));
+		}
+		return output;
+	}
 	
 	
 	

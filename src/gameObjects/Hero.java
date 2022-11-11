@@ -76,7 +76,7 @@ public class Hero extends DynamicGameObject {
 	}
 	
 	public void moveUp() {
-		yVel = -HERO_SPEED;
+		yVel = -2*HERO_SPEED;
 	}
 	public void updateScore(int score) {
 		this.score += score;
@@ -108,6 +108,10 @@ public class Hero extends DynamicGameObject {
 	public void setxPos(int newXPos) {
 		this.xPos = newXPos;
 		
+	}
+	
+	public void addLife() {
+		lives++;
 	}
 
 
