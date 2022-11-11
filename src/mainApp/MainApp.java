@@ -23,7 +23,7 @@ import javax.swing.border.Border;
 import gameObjects.GameObject;
 import gameObjects.Hero;
 import gameObjects.PlatformPiece;
-
+//FINAL VERSION!!!
 /**
  * Class: MainApp
  * 
